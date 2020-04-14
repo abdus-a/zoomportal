@@ -77,11 +77,66 @@ body {
   background:#e30000;
   color:#dbbc0d;
 }
+* {box-sizing: border-box}
+.mySlides1, .mySlides2 {display: none}
+img {vertical-align: middle;}
 
+/* Slideshow container */
+.slideshow-container {
+  max-width: 250px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
 </style>
 </head>
-<body>
-  <p align="center" id="updatetext">The Time table will be updated if it was changed</p>
+<script>
+function startTime() {
+  var today = new Date();
+  var h = today.getHours();
+  var m = today.getMinutes();
+  var s = today.getSeconds();
+  m = checkTime(m);
+  s = checkTime(s);
+  document.getElementById('txt').innerHTML =
+  h + ":" + m + ":" + s;
+  var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+  if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+  return i;
+}
+</script>
+<body onload="startTime()">
+  <div style=" margin:0px; padding:0px;" id="txt" align="right"></div>
+  <p align="center" id="updatetext" style="display:inline block;">The Time table will be updated if it was changed</p>
 
 <div class="sidenav">
   <button class="dropdown-btn">Attend Classes
@@ -91,7 +146,7 @@ body {
       <a href="https://zoom.us/j/8957603334">P.E</a>
       <a href="https://zoom.us/j/5155962083">Sociology</a>
       <a href="https://zoom.us/j/9318379660">English</a>
-      <a href="https://zoom.us/j/3581440190">Psychology</a>
+      <a href="https://zoom.us/j/5294724657">Psychology</a>
       <a href="https://zoom.us/j/3581440190">P.S</a>
   </div>
   <button class="dropdown-btn">Google-Classroom
@@ -104,10 +159,6 @@ body {
       <a href="https://classroom.google.com/u/2/c/NjY4NDY0MDEyNTRa">P.E</a>
       <a href="https://classroom.google.com/u/2/c/NjczOTM3MzUxNTNa">Sociology</a>
   </div>
-
-
-
-
 </div>
 
 <script>
@@ -492,6 +543,5 @@ div.WordSection1
 
 </div>
 </div>
-
 </body>
 </html>
